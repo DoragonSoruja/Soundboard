@@ -34,6 +34,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.fileSelectButton = new System.Windows.Forms.Button();
             this.audioList = new System.Windows.Forms.ListView();
+            this.idNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addButton = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.playButton.TabIndex = 0;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // testButton
             // 
@@ -79,10 +81,13 @@
             // audioList
             // 
             this.audioList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idNumber,
             this.name,
             this.timeLength});
+            this.audioList.FullRowSelect = true;
             this.audioList.HideSelection = false;
             this.audioList.Location = new System.Drawing.Point(159, 108);
+            this.audioList.MultiSelect = false;
             this.audioList.Name = "audioList";
             this.audioList.Scrollable = false;
             this.audioList.Size = new System.Drawing.Size(316, 274);
@@ -90,15 +95,20 @@
             this.audioList.UseCompatibleStateImageBehavior = false;
             this.audioList.View = System.Windows.Forms.View.Details;
             // 
+            // idNumber
+            // 
+            this.idNumber.Text = "ID";
+            this.idNumber.Width = 30;
+            // 
             // name
             // 
             this.name.Text = "Name";
-            this.name.Width = 226;
+            this.name.Width = 232;
             // 
             // timeLength
             // 
             this.timeLength.Text = "Time";
-            this.timeLength.Width = 87;
+            this.timeLength.Width = 51;
             // 
             // addButton
             // 
@@ -122,6 +132,7 @@
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.playButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Soundboard";
             this.ResumeLayout(false);
@@ -139,6 +150,7 @@
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader timeLength;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.ColumnHeader idNumber;
     }
 }
 

@@ -18,6 +18,7 @@ namespace Soundboard
             InitializeComponent();
         }
 
+        int id = 1;
         string audioFilePath;
         string audioName;
 
@@ -39,6 +40,12 @@ namespace Soundboard
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            if(filePath.Text.ToString() == "")
+            {
+                MessageBox.Show("Please select a valid file");
+                return;
+            }
+            
             WindowsMediaPlayer wmp = new WindowsMediaPlayer();
             IWMPMedia mediainfo = wmp.newMedia(audioFilePath);
             int minutes = (int)mediainfo.duration / 60;
@@ -55,7 +62,16 @@ namespace Soundboard
                 time = minutes.ToString() + ":" + seconds.ToString();
             }
 
-            audioList.Items.Add(new ListViewItem(new String[] {audioName, time}));
+            audioList.Items.Add(new ListViewItem(new String[] {id.ToString(), audioName, time}));
+            id++;
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            if (audioList.SelectedItems.Count > 0)
+            {
+                MessageBox.Show("Test message");
+            }
         }
     }
 }
